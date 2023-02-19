@@ -1,0 +1,18 @@
+#ifndef __{{.}}_H__
+#define __{{.}}_H__
+ 
+class {{.}}
+{
+private:
+        
+protected:
+
+public:
+	{{.}}();
+	{{.}}({{.}} const &cpy);
+	{{.}} &operator=({{.}} const &cpy);
+	virtual ~{{.}}();
+	
+};
+#endif
+
