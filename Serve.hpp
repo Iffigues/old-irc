@@ -25,7 +25,7 @@ protected:
 public:
     Serve(Serve &other) = delete;
     void operator=(const Serve &) = delete;
-    static Serve *GetInstance();
+    static Serve *GetInstance(int port, std::string const &password);
 
 };
 #endif

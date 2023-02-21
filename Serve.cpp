@@ -6,12 +6,12 @@
 Serve* Serve::pinstance_{nullptr};
 std::mutex Serve::mutex_;
 
-Serve *Serve::GetInstance()
+Serve *Serve::GetInstance(int port, std::string const &password)
 {
     std::lock_guard<std::mutex> lock(mutex_);
     if (pinstance_ == nullptr)
     {
-        pinstance_ = new Serve(8080, "hello");
+        pinstance_ = new Serve(port, password);
     }
     return pinstance_;
 }
