@@ -1,3 +1,6 @@
 bircd
 a.out
 ircserv
+.vscode
+server/a.out
+server/ircserv
