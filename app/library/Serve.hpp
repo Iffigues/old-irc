@@ -12,11 +12,8 @@ private:
 	static Serve * pinstance_;
     static std::mutex mutex_;
 protected:
-	Serve(int port, std::string const &password) : port(port), password(password)
-    {
-
-    }
-    ~Serve(){}
+	Serve(int port, std::string const &password);
+    virtual ~Serve();
     int port;
     std::string const &password;
     int server_fd;

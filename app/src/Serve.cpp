@@ -6,6 +6,15 @@
 Serve* Serve::pinstance_{nullptr};
 std::mutex Serve::mutex_;
 
+Serve::Serve(int port, std::string const &password) : port(port), password(password)
+{
+
+}
+
+Serve::~Serve(){
+
+}
+
 Serve *Serve::GetInstance(int port, std::string const &password)
 {
     std::lock_guard<std::mutex> lock(mutex_);
