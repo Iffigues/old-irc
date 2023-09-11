@@ -1,7 +1,7 @@
-#include "Param.hpp"
+#include "../library/Param.hpp"
 #include <stdio.h>
 
-#include "Hosting.hpp"
+#include "../library/Hosting.hpp"
 
 const char* Param::Errors::what() const throw()
 {
@@ -21,7 +21,7 @@ bool Param::addHost(std::string const &port) {
     return true;
 }
 
-Param::Param(Hosting const *host, std::string const &port, std::string const &password) : port(port), password(password), handle(false)
+Param::Param(Hosting const *host, std::string const &port, std::string const &password) : port(port), password(password), handle(true)
 {
     if (this->password.length() < 1)
         throw Param::Errors();

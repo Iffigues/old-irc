@@ -1,9 +1,9 @@
-#include "Serve.hpp"
+#include "../library/Serve.hpp"
 
 #include <iostream>
 #include <mutex>
 
-Serve* Serve::pinstance_{nullptr};
+Serve* Serve::pinstance_ = nullptr;;
 std::mutex Serve::mutex_;
 
 Serve::Serve(int port, std::string const &password) : port(port), password(password)

@@ -1,5 +1,5 @@
-#include "Param.cpp"
-#include "Hosting.cpp"
+#include "../library/Param.hpp"
+#include "../library/Hosting.hpp"
 
 # include <iostream>
 
