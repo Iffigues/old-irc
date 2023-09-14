@@ -14,7 +14,7 @@ public:
 	ParamBuilder(ParamBuilder const &cpy);
 	ParamBuilder &operator=(ParamBuilder const &cpy);
 	virtual ~ParamBuilder();
-	Param *build(char **b, int i);	
+	static Param *build(char **b, int i);	
 };
 #endif
 

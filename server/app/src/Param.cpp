@@ -21,22 +21,12 @@ bool Param::addHost(std::string const &port) {
     return true;
 }
 
-Param::Param(Hosting const *host, std::string const &port, std::string const &password) : port(port), password(password), handle(true)
+Param::Param(Hosting const *host, std::string const &port, std::string const &password, bool const handle) : Host(host), port(port), password(password), handle(handle)
 {
     if (this->password.length() < 1)
         throw Param::Errors();
     if (!this->isPort(port))
         throw Param::PorsErrors();
-    this->Host = host;
-}
-
-Param::Param(std::string const &port, std::string const &password) : port(port), password(password), handle(false)
-{
-    if (this->password.length() < 1)
-        throw Param::Errors();
-    if (!this->isPort(port))
-        throw Param::PorsErrors();
-    
 }
 
 Param::~Param()

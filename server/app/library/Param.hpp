@@ -12,15 +12,14 @@ private:
     Param();
     std::string const &port;
     std::string const &password;
-    bool const handle;
+    bool  const handle;
     const Hosting *Host;
     bool isPort(std::string const &port);
     bool addHost(std::string const &str);
 protected:
 
 public:
-	Param(std::string const &port, std::string const &password);
-    Param(Hosting const *host, std::string const &port, std::string const &password);
+    	Param(Hosting const *host, std::string const &port, std::string const &password, bool const handle);
 	Param(Param const &cpy);
 	Param &operator=(Param const &cpy);
 
