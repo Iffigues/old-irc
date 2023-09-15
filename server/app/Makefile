@@ -2,11 +2,11 @@ CXX = g++
 
 CXXFLAGS = -std=c++98 -Ilibrary
 
-SOURCE = main	\
-	Hosting	\
-	Param	\
-	ParamBuilder	\
-	Serve
+SOURCE =	 main		\
+		Hosting		\
+		Param		\
+		ParamBuilder	\
+		Serve
 
 SOURCES = $(addsuffix .cpp,$(addprefix src/,$(SOURCE)))
 
