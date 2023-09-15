@@ -2,7 +2,7 @@ CXX = g++
 
 CXXFLAGS = -std=c++98 -Ilibrary
 
-SOURCE =	 main		\
+SOURCE =	main		\
 		Hosting		\
 		Param		\
 		ParamBuilder	\
