@@ -10,7 +10,10 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(EXECUTABLE) $(OBJECTS)
+	rm -f $(OBJECTS)
+fclean: clean
+	rm -f $(EXECUTABLE)
+re: fclean all
 
-.PHONY: all clean
+.PHONY: all clean fclean re
 

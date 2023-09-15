@@ -22,14 +22,9 @@ ParamBuilder::ParamBuilder(ParamBuilder const &cpy)
 
 Param *ParamBuilder::build(char **b, int i)
 {
-	Param *bb;	
 	Hosting *host = NULL;
-	bool v = false;
 
-	if (i == 3) {
+	if (i == 3)
 		host = new Hosting(b[0]);
-		v = true;
-	}
-	bb = new Param(host, b[1], b[2], v);
-	return bb;
+	return new Param(host, b[1], b[2], host != NULL);
 }
