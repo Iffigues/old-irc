@@ -18,6 +18,10 @@ public:
 	Hosting(Hosting const &cpy);
 	Hosting &operator=(Hosting const &cpy);
 	virtual ~Hosting();
+
+	std::string const &getHost() const;
+	std::string const &getPort() const;
+	std::string const &getPassword() const;
 	
 };
 #endif

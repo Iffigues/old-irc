@@ -26,8 +26,10 @@ Hosting::Hosting(std::string const &str)
             this->port = *it;
         if (i == 2)
             this->password = *it;
-        i++;
+	i++;
     }
+	std::cout << "The value of myVariable is: " << this->password << std::endl;
+
 }
 
 Hosting::~Hosting()
@@ -44,3 +46,17 @@ Hosting::Hosting(Hosting const &cpy)
 {
 }
 
+std::string const &Hosting::getHost() const
+{
+	return this->host;
+}
+
+std::string const &Hosting::getPort() const
+{
+	return this->port;
+}
+
+std::string const &Hosting::getPassword() const
+{
+	return this->password;
+}
