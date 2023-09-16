@@ -11,8 +11,11 @@ class Serve
 private:
 	static Serve * pinstance_;
     static std::mutex mutex_;
+	 Serve(const Serve&);
+    Serve& operator=(const Serve&);
+
 protected:
-	Serve(int port, std::string const &password);
+    Serve(int port, std::string const &password);
     virtual ~Serve();
     int port;
     std::string const &password;
@@ -20,8 +23,6 @@ protected:
     struct sockaddr_in address;
 
 public:
-    Serve(Serve &other) = delete;
-    void operator=(const Serve &) = delete;
     static Serve *GetInstance(int port, std::string const &password);
 
 };
