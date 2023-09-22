@@ -1,90 +1,21 @@
-socket:
+socket: http://manpagesfr.free.fr/man/man2/socket.2.html
 
-Créer un point de communication
-socket() crée un point de communication, et renvoie un descripteur.
-	
-	int socket(int domain, int type, int protocol);  
+setsockopt: https://fr.manpages.org/setsockopt/2
 
-setsockopt:
+getsockname: http://manpagesfr.free.fr/man/man2/getsockname.2.html
 
-	int setsockopt(int sockfd, int level, int optname, const void *optval, socklen_t optlen);
+getprotobyname: http://manpagesfr.free.fr/man/man3/getprotoent.3.html
 
-	 getsockopt()  et setsockopt() manipulent les options associées à la socket à laquelle fait
-       référence le descripteur de fichier sockfd. Ces options peuvent exister aux divers niveaux
-       de protocole, et sont toujours présentes au niveau socket le plus élevé.
-       Quand  on manipule une option d'une socket, il faut préciser le niveau où elle s'applique,
-       et le nom de l'option. Au niveau de l'API des sockets, level prend la  valeur  SOL_SOCKET.
-       Pour  tous  les  autres  niveaux,  il  faut  fournir le numéro de protocole approprié. Par
-       exemple, pour une option interprétée par le protocole TCP,  level  prendra  le  numéro  du
-       protocole TCP. Consultez getprotoent(3).
-       Les   paramètres  optval  et  optlen  sont  utilisés  pour  déterminer  les  options  pour
-       setsockopt(). Pour getsockopt ils identifient un tampon dans lequel la valeur de  l'option
-       désirée  doit  être renvoyée. Pour getsockopt, optlen est un paramètre résultat, contenant
-       initialement la taille du tampon pointé par optval, et rempli en retour pour  indiquer  la
-       taille effective des valeurs renvoyées. Si aucune option n'est fournie ou renvoyée, optval
-       peut être NULL.
-       optname et toute autre option sont passés sans interprétation au protocole approprié, pour
-       qu'il  l'interprète lui‐même. Le fichier d'en‐tête <sys/socket.h> contient les définitions
-       pour le niveau socket. Les options pour les autres niveaux  de  protocole  peuvent  varier
-       tant  en  format  qu'en  nom,  consultez  les  pages  de  manuel de la section 7 pour plus
-       d'informations.
-       La plupart des options au niveau socket utilisent un paramètre de type  int  pour  optval.
-       Pour setsockopt(), un paramètre non nul valide une option booléenne, et zéro l'invalide.
-       Pour   une   description   des  options  disponibles  consultez  socket(7)  et  les  pages
-       correspondant au protocole concerné.
+gethostbyname: http://manpagesfr.free.fr/man/man3/gethostbyname.3.html
 
-	
-fcntl:
+getaddrinfo: http://manpagesfr.free.fr/man/man3/getaddrinfo.3.html
 
-manipuler un descripteur de fichier
+freeaddrinfo: http://manpagesfr.free.fr/man/man3/getaddrinfo.3.html
 
-	fcntl(fd, F_SETFL, O_NONBLOCK);
-		fd: file descriptor
-		
-		F_SETFL:	Positionner les nouveaux attributs d'état pour le fichier à la valeur indiquée par arg.
-				Les modes d'accès au fichier (O_RDONLY, O_WRONLY, O_RDWR) et les attributs de création du fichier (c'est-à-dire O_CREAT, O_EXCL, O_NOCTTY, O_TRUNC) dans arg sont ignorés.
-				Sous Linux, cette commande ne peut changer que les attributs O_APPEND, O_ASYNC, O_DIRECT, O_NOATIME et O_NONBLOCK.
+bind: http://manpagesfr.free.fr/man/man2/bind.2.html
 
-		O_NONBLOCK:	Le fichier est ouvert en mode « non bloquant ».
-				Ni la fonction open() ni aucune autre opération ultérieure sur ce fichier ne laissera le processus appelant en attente.
-				Pour la manipulation des FIFO (tubes nommés), voir également fifo(7).
-				Pour une discussion sur l'effet de O_NONBLOCK conjointement aux verrouillages de fichier impératifs et aux baux de fichiers, voir fcntl(2).
+connect: http://manpagesfr.free.fr/man/man2/connect.2.html
 
-getsockname:
-getsockname() renvoie le nom name de la socket indiquée. Le paramètre namelen doit être initialisé pour indiquer la taille de la zone mémoire pointée par name. En retour, il contiendra la taille effective (en octets) du nom renvoyé.  
-	
-       int getsockname(int s, struct sockaddr *name, socklen_t *namelen)
+listen: http://manpagesfr.free.fr/man/man2/listen.2.html
 
 
-getprotobyname:
-La fonction getprotobyname() renvoie une structure protoent correspondant à la ligne du fichier /etc/protocols qui concerne le protocole appelé name.
-       struct protoent *getprotobyname(const char *name);
-
-gethostbyname:
-Obtenir des informations concernant le réseau
-       struct hostent *gethostbyname(const char *name);
-
-getaddrinfo:
-Traduction d'adresses et de services réseau  
-
-int getaddrinfo(const char *node, const char *service, const struct addrinfo *hints, struct addrinfo **res);
-
-freeaddrinfo:
-
-void freeaddrinfo(struct addrinfo *ai);
-
-
-bind:
-Quand une socket est créée avec l'appel système socket(2), elle existe dans l'espace des noms mais n'a pas de nom assigné). bind() affecte l'adresse spécifiée dans addr à la socket référencée par le descripteur de fichier sockfd.
-addrlen indique la taille, en octets, de la structure d'adresse pointée par addr. Traditionnellement cette opération est appelée « affectation d'un nom à une socket ».
-Il est normalement nécessaire d'affecter une adresse locale avec bind() avant qu'une socket SOCK_STREAM puisse recevoir des connexions (voir accept(2)).
-Les règles d'affectation de nom varient suivant le domaine de communication. Consultez les pages de manuel Linux de la section 7 pour de plus amples informations.
-Pour AF_INET voir ip(7), pour AF_INET6 voir ipv6(7), pour AF_UNIX voir unix(7), pour AF_APPLETALK voir ddp(7), pour AF_PACKET voir packet(7), pour AF_X25 voir x25(7) et pour AF_NETLINK voir netlink(7). La structure réellement passée comme argument addr dépendra de la famille d'adresses. La définition de la structure sockaddr est quelque chose comme :
-struct sockaddr {
-    sa_family_t sa_family;
-    char        sa_data[14];
-}
-
-Le seul objet de cette structure est de transtyper le pointeur structure passé dans addr afin d'éviter les avertissements à la compilation. Voir EXEMPLE plus loin. 
-
-       int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);

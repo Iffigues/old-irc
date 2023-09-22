@@ -27,10 +27,6 @@ Param::Param(Hosting const *host, std::string const &port, std::string const &pa
         throw Param::Errors();
     if (!this->isPort(port))
         throw Param::PorsErrors();
-    if (this->handle) {
-    	if (!this->isPort(this->Host->getPort()))
-        	throw Param::PorsErrors();
-    }
 }
 
 Param::~Param()

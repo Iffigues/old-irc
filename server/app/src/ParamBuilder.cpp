@@ -26,5 +26,6 @@ Param *ParamBuilder::build(char **b, int i)
 
 	if (i == 3)
 		host = new Hosting(b[0]);
+
 	return new Param(host, b[1], b[2], host != NULL);
 }
