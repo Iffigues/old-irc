@@ -29,6 +29,16 @@ Param::Param(Hosting const *host, std::string const &port, std::string const &pa
         throw Param::PorsErrors();
 }
 
+std::string const &Param::getPort() const
+{
+	return this->port;
+}
+
+std::string const &Param::getPassword() const
+{
+	return this->password;
+}
+
 Param::~Param()
 {
 }

@@ -1,8 +1,11 @@
 #include "../library/Param.hpp"
 #include "../library/Hosting.hpp"
 #include "../library/ParamBuilder.hpp"
+#include "../library/Serve.hpp"
 
 # include <iostream>
+#include <string>
+
 
 int start(int argc, char *argv[]) {
 	bool t;
@@ -13,6 +16,9 @@ int start(int argc, char *argv[]) {
         	return 1;
 	argv++;
 	e = ParamBuilder::build(argv, (argc - 1));
+
+	Serve* serve = Serve::GetInstance(std::stoi(e->getPort()), e->getPassword());
+	Serve::ReleaseInstance();
 	 
 	return 0;
 }

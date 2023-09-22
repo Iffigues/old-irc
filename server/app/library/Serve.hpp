@@ -24,7 +24,7 @@ protected:
 
 public:
     static Serve *GetInstance(int port, std::string const &password);
-
+    static void ReleaseInstance();
 };
 #endif
 

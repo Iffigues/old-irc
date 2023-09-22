@@ -22,6 +22,8 @@ public:
     	Param(Hosting const *host, std::string const &port, std::string const &password, bool const handle);
 	Param(Param const &cpy);
 	Param &operator=(Param const &cpy);
+	std::string const &getPort() const;
+	std::string const &getPassword() const;
 
 	class Errors : public std::exception
 	{

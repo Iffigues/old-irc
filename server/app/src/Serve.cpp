@@ -26,3 +26,10 @@ Serve *Serve::GetInstance(int port, std::string const &password)
 }
 
 
+void Serve::ReleaseInstance() {
+        std::lock_guard<std::mutex> lock(mutex_);
+        if (pinstance_ != nullptr) {
+            delete pinstance_;
+            pinstance_ = nullptr;
+        }
+    }
