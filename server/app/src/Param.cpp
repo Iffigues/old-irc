@@ -21,7 +21,7 @@ bool Param::addHost(std::string const &port) {
     return true;
 }
 
-Param::Param(Hosting const *host, std::string const &port, std::string const &password, bool const handle) : Host(host), port(port), password(password), handle(handle)
+Param::Param(std::vector<Hosting*> host, std::string const &port, std::string const &password) : Host(host), port(port), password(password)
 {
     if (this->password.length() < 1)
         throw Param::Errors();
@@ -49,7 +49,7 @@ Param &Param::operator=(Param const &cpy)
 	return *this;
 }
 
-Param::Param(Param const &cpy) : port(cpy.port), password(cpy.password), handle(cpy.handle)
+Param::Param(Param const &cpy) : port(cpy.port), password(cpy.password)
 {
 }
 

@@ -3,6 +3,8 @@
 
 # include <iostream>
 #include "Constante.hpp"
+#include <vector>
+
 #include "Hosting.hpp"
 
 class Param
@@ -12,14 +14,13 @@ private:
     Param();
     std::string const &port;
     std::string const &password;
-    bool  const handle;
-    const Hosting *Host;
+    std::vector<Hosting*> Host;
     bool isPort(std::string const &port);
     bool addHost(std::string const &str);
 protected:
 
 public:
-    	Param(Hosting const *host, std::string const &port, std::string const &password, bool const handle);
+    	Param(std::vector<Hosting*> Host, std::string const &port, std::string const &password);
 	Param(Param const &cpy);
 	Param &operator=(Param const &cpy);
 	std::string const &getPort() const;
