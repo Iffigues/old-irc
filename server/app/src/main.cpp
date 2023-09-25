@@ -18,6 +18,7 @@ int start(int argc, char *argv[]) {
 	e = ParamBuilder::build(argv, (argc - 1));
 
 	Serve* serve = Serve::GetInstance(std::stoi(e->getPort()), e->getPassword());
+	serve->start(e);
 	Serve::ReleaseInstance();
 	 
 	return 0;

@@ -6,6 +6,8 @@
 #include <mutex>
 #include <netinet/in.h>
 
+#include "../library/Param.hpp"
+
 class Serve
 {
 private:
@@ -23,6 +25,7 @@ protected:
     struct sockaddr_in address;
 
 public:
+    void start(Param *e);
     static Serve *GetInstance(int port, std::string const &password);
     static void ReleaseInstance();
 };
